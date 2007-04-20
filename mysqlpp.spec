@@ -3,7 +3,7 @@
 %define libname         %{libname_orig}%{major}
 
 Name:           mysqlpp
-Version:        2.2.0
+Version:        2.2.3
 Release:        %mkrel 1
 Epoch:          0
 Summary:        C++ wrapper for MySQL's C API
@@ -12,7 +12,7 @@ Group:          Development/Databases
 URL:            http://tangentsoft.net/mysql++/
 Source0:        http://tangentsoft.net/mysql++/releases/mysql++-%{version}.tar.gz
 BuildRequires:  MySQL-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 MySQL++ is a C++ wrapper for MySQL's C API. It is built around STL 
@@ -54,9 +54,6 @@ MySQL C++ interface.
 %install
 %{__rm} -rf %{buildroot}
 %{makeinstall}
-%{__mv} %{buildroot}%{_libdir}/libmysqlpp.so %{buildroot}%{_libdir}/libmysqlpp.so.%{version}
-(cd %{buildroot}%{_libdir} && %{__ln_s} libmysqlpp.so.%{version} libmysqlpp.so.%{major})
-(cd %{buildroot}%{_libdir} && %{__ln_s} libmysqlpp.so.%{version} libmysqlpp.so)
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -77,5 +74,3 @@ MySQL C++ interface.
 %defattr(-,root,root)
 %{_includedir}/mysql++
 %{_libdir}/lib*.so
-
-
