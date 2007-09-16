@@ -1,10 +1,10 @@
 %define major           2
-%define libname_orig    %mklibname %{name}
-%define libname         %{libname_orig}%{major}
+%define libname         %mklibname mysqlpp %{major}
+%define libname_devel   %mklibname mysqlpp -d
 
 Name:           mysqlpp
 Version:        2.2.3
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        C++ wrapper for MySQL's C API
 License:        LGPL
@@ -22,28 +22,26 @@ STL container.
 %package -n %{libname}
 Summary:        C++ wrapper for MySQL's C API
 Group:          System/Libraries
-Provides:       %{libname_orig}
 
 %description -n %{libname}
 MySQL++ is a C++ wrapper for MySQL's C API. It is built around STL 
 principles, to make dealing with the database as easy as dealing with an 
 STL container.
 
-%package -n %{libname}-devel
+%package -n %{libname_devel}
 Summary:        Development files for MySQL++
 Group:          Development/Databases
-Provides:       %{libname_orig}-devel
-Provides:       lib%{name}-devel
+Provides:       mysqlpp-devel = %{epoch}:%{version}-%{release}
+Obsoletes:      %{mklibname mysqlpp 2}-devel < %{epoch}:%{version}-%{release}
 Requires:       %{libname} = %{epoch}:%{version}-%{release}
 
-%description -n %{libname}-devel
+%description -n %{libname_devel}
 This package contains static libraries and headers of MySQL++ which are
 useful when you develop or compile any applications/libraries using
 MySQL C++ interface.
 
 %prep
 %setup -q -n mysql++-%{version}
-%{_bindir}/find . -type d -name CVS | %{_bindir}/xargs -t %{__rm} -rf
 
 %build
 %{configure2_5x} --with-mysql-lib=%{_libdir} \
@@ -53,7 +51,7 @@ MySQL C++ interface.
 
 %install
 %{__rm} -rf %{buildroot}
-%{makeinstall}
+%{makeinstall_std}
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -68,7 +66,7 @@ MySQL C++ interface.
 %defattr(-,root,root)
 %{_libdir}/lib*.so.*
 
-%files -n %{libname}-devel
+%files -n %{libname_devel}
 %defattr(0644,root,root,0755)
 %doc doc examples/*.{cpp,h}
 %defattr(-,root,root)
