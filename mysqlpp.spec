@@ -12,7 +12,6 @@ Group:          Development/Databases
 URL:            http://tangentsoft.net/mysql++/
 Source0:        http://tangentsoft.net/mysql++/releases/mysql++-%{version}.tar.gz
 BuildRequires:  MySQL-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 MySQL++ is a C++ wrapper for MySQL's C API. It is built around STL 
