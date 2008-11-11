@@ -1,16 +1,17 @@
-%define major           2
+%define major           3
 %define libname         %mklibname mysqlpp %{major}
 %define libname_devel   %mklibname mysqlpp -d
 
 Name:           mysqlpp
-Version:        2.2.3
-Release:        %mkrel 4
+Version:        3.0.6
+Release:        %mkrel 1
 Epoch:          0
 Summary:        C++ wrapper for MySQL's C API
-License:        LGPL
+License:        LGPLv2+
 Group:          Development/Databases
 URL:            http://tangentsoft.net/mysql++/
 Source0:        http://tangentsoft.net/mysql++/releases/mysql++-%{version}.tar.gz
+Patch0:         mysql++-3.0.6-link.patch
 BuildRequires:  MySQL-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -42,6 +43,9 @@ MySQL C++ interface.
 
 %prep
 %setup -q -n mysql++-%{version}
+%patch0 -p1
+
+perl -pi -e 's/\r$//g;' Changelog *.txt 
 
 %build
 %{configure2_5x} --with-mysql-lib=%{_libdir} \
@@ -66,7 +70,7 @@ MySQL C++ interface.
 
 %files -n %{libname}
 %defattr(0644,root,root,0755)
-%doc COPYING CREDITS ChangeLog HACKERS LICENSE README.* Wishlist
+%doc ChangeLog *.txt
 %defattr(-,root,root)
 %{_libdir}/lib*.so.*
 
