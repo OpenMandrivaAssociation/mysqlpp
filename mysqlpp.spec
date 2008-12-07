@@ -3,7 +3,7 @@
 %define libname_devel   %mklibname mysqlpp -d
 
 Name:           mysqlpp
-Version:        3.0.6
+Version:        3.0.8
 Release:        %mkrel 1
 Epoch:          0
 Summary:        C++ wrapper for MySQL's C API
@@ -11,7 +11,7 @@ License:        LGPLv2+
 Group:          Development/Databases
 URL:            http://tangentsoft.net/mysql++/
 Source0:        http://tangentsoft.net/mysql++/releases/mysql++-%{version}.tar.gz
-Patch0:         mysql++-3.0.6-link.patch
+Patch0:         mysql++-3.0.8-link.patch
 BuildRequires:  MySQL-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
