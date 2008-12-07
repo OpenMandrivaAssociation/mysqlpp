@@ -12,7 +12,7 @@ Group:          Development/Databases
 URL:            http://tangentsoft.net/mysql++/
 Source0:        http://tangentsoft.net/mysql++/releases/mysql++-%{version}.tar.gz
 Patch0:         mysql++-3.0.8-link.patch
-BuildRequires:  MySQL-devel
+BuildRequires:  mysql-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
