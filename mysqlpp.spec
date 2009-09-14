@@ -4,7 +4,7 @@
 
 Name:           mysqlpp
 Version:        3.0.8
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        C++ wrapper for MySQL's C API
 License:        LGPLv2+
