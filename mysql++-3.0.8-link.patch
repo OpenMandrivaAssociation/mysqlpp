@@ -1,0 +1,11 @@
+--- mysql++-3.0.8/Makefile.in~	2008-11-27 09:23:04.000000000 +0100
++++ mysql++-3.0.8/Makefile.in	2008-12-07 10:45:42.000000000 +0100
+@@ -392,7 +392,7 @@
+ 	rm -f config.cache config.log config.status bk-deps bk-make-pch shared-ld-sh Makefile
+ 
+ $(DLLPREFIX)mysqlpp$(__mysqlpp___targetsuf3): $(MYSQLPP_OBJECTS) lib/ssqls.h lib/querydef.h
+-	$(SHARED_LD_CXX) $@ $(MYSQLPP_OBJECTS)  $(__mysqlpp___importlib) $(__mysqlpp___soname_flags)   $(__mysqlpp___macinstnamecmd) -l@MYSQL_C_LIB@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  $(LIBS)
++	$(SHARED_LD_CXX) $@ $(MYSQLPP_OBJECTS)  $(__mysqlpp___importlib) $(__mysqlpp___soname_flags)   $(__mysqlpp___macinstnamecmd) -l@MYSQL_C_LIB@ @PTHREAD_CFLAGS@ @PTHREAD_LIBS@ @MYSQLPP_EXTRA_LIBS@ $(LDFLAGS)  $(LIBS)
+ 	
+ 	$(__mysqlpp___so_symlinks_cmd)
+ 
