@@ -9,7 +9,7 @@ Epoch:          0
 Summary:        C++ wrapper for MySQL's C API
 License:        LGPLv2+
 Group:          Development/Databases
-URL:            http://tangentsoft.net/mysql++/
+URL:            https://tangentsoft.net/mysql++/
 Source0:        http://tangentsoft.net/mysql++/releases/mysql++-%{version}.tar.gz
 Patch0:         mysql++-3.0.8-link.patch
 BuildRequires:  mysql-devel
